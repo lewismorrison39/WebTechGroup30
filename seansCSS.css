@@ -5,30 +5,36 @@ body {
   padding: 20px;
   color: #333;
 }
+
 header, footer {
-  background: #60B58B;
-  color: white;
+  background: linear-gradient(to right, #BBFFDD, #60B58B, #FFBBFF, #CA85CA, #9B529B);
+  border: 3px solid #2a475e;
   text-align: center;
   padding: 20px;
 }
+
 main, .grid {
   max-width: 1000px;
   margin: auto;
 }
+
 nav a {
   margin: 0 10px;
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
 }
+
 h1, h2 {
   color: #2a475e;
 }
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 15px;
 }
+
 .cat-card {
   background: white;
   border-radius: 8px;
@@ -36,17 +42,29 @@ h1, h2 {
   text-align: center;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
   transition: transform 0.2s;
+  height: 260px; /* fixed height for consistent card size */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 .cat-card:hover {
   transform: scale(1.05);
 }
+
 .cat-card img {
   width: 100%;
   height: 150px;
   object-fit: cover;
   border-radius: 5px;
 }
+
+.cat-card p {
+  margin: 5px 0;
+}
+
 footer {
   font-size: 14px;
   margin-top: 30px;
 }
+

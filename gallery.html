@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Gallery</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+header, footer {
+  background: linear-gradient(to right, #BBFFDD, #60B58B, #FFBBFF, #CA85CA, #9B529B);
+  border: 3px solid #2a475e;
+  box-sizing: border-box;
+}
+</style>
+
+<style>
+#searchInput { width: 100%; padding: 10px; margin: 20px 0; border: 1px solid #ccc; border-radius: 5px; }
+</style>
+</head><body>
+<header><h1>Cat Gallery</h1></header>
+<nav><a href="index.html">Home</a> <a href="quiz.html">Quiz</a> <a href="game.html">Game</a> <a href="random.html">Random Cat</a></nav>
+<input type="text" id="searchInput" placeholder="Search cats by name or personality...">
+<div class="grid" id="catGrid">
+<div class="cat-card"><a href="cat1.html"><img src="images/cat1.jpg" alt="Luna"></a><p><strong>Luna</strong><br>Playful, curious</p></div>
+<div class="cat-card"><a href="cat2.html"><img src="images/cat2.jpg" alt="Max"></a><p><strong>Max</strong><br>Calm, gentle</p></div>
+<div class="cat-card"><a href="cat3.html"><img src="images/cat3.jpg" alt="Bella"></a><p><strong>Bella</strong><br>Energetic, adventurous</p></div>
+<div class="cat-card"><a href="cat4.html"><img src="images/cat4.jpg" alt="Oliver"></a><p><strong>Oliver</strong><br>Sweet, affectionate</p></div>
+<div class="cat-card"><a href="cat5.html"><img src="images/cat5.jpg" alt="Daisy"></a><p><strong>Daisy</strong><br>Independent, confident</p></div>
+<div class="cat-card"><a href="cat6.html"><img src="images/cat6.jpg" alt="Milo"></a><p><strong>Milo</strong><br>Loyal, smart</p></div>
+<div class="cat-card"><a href="cat7.html"><img src="images/cat7.jpg" alt="Cleo"></a><p><strong>Cleo</strong><br>Elegant, reserved</p></div>
+<div class="cat-card"><a href="cat8.html"><img src="images/cat8.jpg" alt="Leo"></a><p><strong>Leo</strong><br>Brave, outgoing</p></div>
+<div class="cat-card"><a href="cat9.html"><img src="images/cat9.jpg" alt="Willow"></a><p><strong>Willow</strong><br>Soft-hearted, shy</p></div>
+<div class="cat-card"><a href="cat10.html"><img src="images/cat10.jpg" alt="Nala"></a><p><strong>Nala</strong><br>Mischievous, fun-loving</p></div></div>
+<script>
+document.getElementById('searchInput').addEventListener('keyup', function() {
+  var input = this.value.toLowerCase();
+  var cards = document.querySelectorAll('.cat-card');
+  cards.forEach(function(card) {
+    var text = card.innerText.toLowerCase();
+    card.style.display = text.includes(input) ? '' : 'none';
+  });
+});
+</script>
+<footer>&copy; 2025 Cat Website</footer></body></html>

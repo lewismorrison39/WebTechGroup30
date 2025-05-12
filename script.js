@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function goToRandomCat() {
   const catPages = [
     "cats/cat1.html",
@@ -13,7 +12,7 @@ function goToRandomCat() {
 
   window.location.href = randomPage;
 }
-=======
+
 const personalityTypes = [
     {
         title: "Milo",
@@ -135,4 +134,3 @@ document.getElementById('submit-btn').addEventListener('click', () => {
 
 // Initialize on load
 window.onload = initQuiz;
->>>>>>> ac8c7b6f0a04310b162a227d505e116a5e050c83

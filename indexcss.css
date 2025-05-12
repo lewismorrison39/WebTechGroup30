@@ -1,0 +1,95 @@
+.large-container {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	flex-direction: row;
+}
+
+.small-container {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	flex-direction: row;
+}
+
+a:link {
+	text-decoration: none;
+	text-shadow: 2px 3px black;
+	color: white;
+}
+  
+a:visited {
+	text-decoration: none;
+	text-shadow: 2px 3px black;
+	color: white;
+}
+  
+a:hover {
+	text-decoration: none;
+	text-shadow: 2px 3px black;
+	color: white;	
+}
+  
+a:active {
+	text-decoration: none;
+	text-shadow: 2px 3px black;
+}
+
+.flex-item {
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 5px;
+	width: 600px;
+	height: 400px;
+	margin-top: 10px;
+	line-height: 45px;
+	color: #9b529b;
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.small-item {
+	background:#9b529b;
+	padding: 15px;
+	width: 200px;
+	height: 130px;
+	margin: 10px;
+	line-height: 130px;
+	color: white;
+	font-weight: bold;
+	font-size: 3em;
+	text-align: center;
+	text-decoration: none;	
+	border-radius: 25px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.small-item:hover, .small-item:active {
+	background: #461346;
+}
+
+button {
+	margin: 50px;
+}
+
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100px;
+	text-align: center;
+	color: #461346;
+	margin-top: none;
+}
+
+body{
+	background-color: #BBFFDD;
+	background-image: linear-gradient(#BBFFDD, #60B58B);
+	text-align: center;
+}

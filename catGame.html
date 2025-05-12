@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cat Match Game</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #FFFFFF; /* sets colour for main background */
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 20px;
+      background-color: #60B58B; /* colour for the title background */
+      color: #000;
+      font-size: 2rem;
+      border-bottom: 4px solid #9B529B; /* divider between title and rest of the page */
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    /* creates the reset button, home button and timer */
+    #homeButton, #resetButton, #timer {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+      border: 2px solid black; /* border around buttons and timer */
+    }
+
+    /* sets the colour of the home button and its text */
+    #homeButton {
+      background-color: #C0F3E2; /* soft green */
+      color: #000;
+    }
+
+    /* changes the colour of the home button and its text when hovered over */
+    #homeButton:hover {
+      background-color: #60B58B;
+      color: white;
+    }
+
+    /* sets the colour of the reset button and its text */
+    #resetButton {
+      background-color: #FFBBFF; /* colour for the reset button */
+      color: #000;
+    }
+
+    /* changes the colour of the reset button and its text when hovered over */
+    #resetButton:hover {
+      background-color: #9B529B;
+      color: white;
+    }
+
+    /* colour of the timer and its text */
+    #timer {
+      background-color: #CA85CA;
+      color: #000;
+    }
+
+    /*determines the layout of the cards */
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      padding: 0 10px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      border: 2px solid #333;
+      border-radius: 8px;
+      transition: transform 0.2s;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>Cat Match Game!</h1>
+
+  <div class="controls">
+    <button id="homeButton">Home</button>
+    <button id="resetButton">Reset</button>
+    <div id="timer">Time: 0s</div>
+  </div>
+
+  <div class="game-board" id="gameBoard"></div>
+
+  <script>
+    //creates images and duplicates to allow matching
+    const allImages = [
+      'Gizmo.jpg', 'Gizmo.jpg',
+      'italy.jpg', 'italy.jpg',
+      'Glasgow.png', 'Glasgow.png',
+      'Argentina.png', 'Argentina.png',
+      'Brazil.jpg', 'Brazil.jpg',
+      'snow.jpg', 'snow.jpg'
+    ];
+
+    let gameBoard = document.getElementById('gameBoard');
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let timerStarted = false;
+    let startTime;
+    let timerInterval;
+    let seconds = 0;
+
+    //starts the timer, increments by 1 for each second passed
+    function startTimer() {
+      seconds = 0; // Reset the timer each time it's started
+      timerInterval = setInterval(() => {
+        seconds++;
+        document.getElementById('timer').textContent = `Time: ${seconds}s`;
+      }, 1000);
+    }//end startTimer
+
+    //stops the timer by clearing the interval
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }//end stopTimer
+
+function createBoard() {
+  gameBoard.innerHTML = '';
+
+  const shuffledImageSources = [...allImages].sort(() => Math.random() - 0.5);
+
+  flippedCards = [];
+  matchedPairs = 0;
+
+  shuffledImageSources.forEach((imageSource) => {
+    const cardImage = document.createElement('img');
+    cardImage.src = 'catImages/back.png';  // Path to back image in /catImages folder
+    cardImage.dataset.src = `catImages/${imageSource}`;  // Path to the actual image in /catImages folder
+    cardImage.draggable = false;
+
+    cardImage.addEventListener('click', () => handleCardClick(cardImage));
+    gameBoard.appendChild(cardImage);
+  });
+}
+
+
+    //function to handle clicking the cards
+    function handleCardClick(card) {
+      if (!timerStarted) {
+        startTimer();
+        timerStarted = true;
+      }//end if
+
+      if (flippedCards.length >= 2 || card.src.includes(card.dataset.src)) return;
+
+      card.src = card.dataset.src;
+      flippedCards.push(card);
+
+      if (flippedCards.length === 2) {
+        const [cardOne, cardTwo] = flippedCards;
+
+        if (cardOne.dataset.src === cardTwo.dataset.src) {
+          flippedCards.length = 0;
+          matchedPairs++;
+
+          if (matchedPairs === allImages.length / 2) {
+            stopTimer();
+          }
+        } else {
+          setTimeout(() => {
+            cardOne.src = 'back.png';
+            cardTwo.src = 'back.png';
+            flippedCards.length = 0;
+          }, 750); //end setTimeout
+        }//end else (line 182)/ if (line 179)
+      }//end if (line 172)
+    }//end funtion handleCardClick
+
+    document.getElementById('resetButton').addEventListener('click', () => {
+      stopTimer();
+      document.getElementById('timer').textContent = 'Time: 0s';
+      timerStarted = false;
+      createBoard();
+    });
+
+    //code for the home button
+    document.getElementById('homeButton').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+
+    createBoard();
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+#randomCatBtn {
+  background-color: #e600ffc8;
+  color: rgb(73, 2, 66);
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+#randomCatBtn:hover {
+  background-color: #10825a;
+}

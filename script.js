@@ -1,10 +1,15 @@
 function goToRandomCat() {
   const catPages = [
-    "cats/cat1.html",
-    "cats/cat2.html",
-    "cats/cat3.html",
-    "cats/cat4.html",
-    "cats/cat5.html"
+    "cat1.html",
+    "cat2.html",
+    "cat3.html",
+    "cat4.html",
+    "cat5.html",
+    "cat6.html",
+    "cat7.html",
+    "cat8.html",
+    "cat9.html",
+    "cat10.html",
   ];
 
   const randomIndex = Math.floor(Math.random() * catPages.length);
